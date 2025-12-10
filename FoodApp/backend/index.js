@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 require('dotenv').config();
 
-const FoodModel = *require('./models/Food')
+const FoodModel = require('./models/Food')
 
 const app = express();
 const PORT = process.env.PORT || 3000
@@ -20,9 +20,9 @@ app.use(cors());
 app.use(express.json())
 
 app.post("/insert", async (req,res) => {
-    const foodName = req.body.foodName;
-    const daysSinceIAte = req.body.daysSinceIAte;
-    const food = new FoodModel({foodName : foodName, daysSinceIAte : daysSinceIAte});
+    const foodname = req.body.foodname;
+    const daysSinceIate = req.body.daysSinceIate;
+    const food = new FoodModel({foodname : foodname, daysSinceIate : daysSinceIate});
     try {
         await food.save();
         res.status(201).send("Food item inserted successfully");
@@ -42,9 +42,9 @@ app.get('/read', async (req,res) => {
 
 app.put('/update/:id', async (req,res) => {
     const id = req.params.id;
-    const newDaysSinceIAte = req.body.newDaysSinceIAte;
+    const newfoodname = req.body.newfoodname;
     try {
-        await FoodModel.findByIdAndUpdate(id, { daysSinceIAte: newDaysSinceIAte });
+        await FoodModel.findByIdAndUpdate(id, { foodname: newfoodname });
         res.status(200).send("Food item updated successfully");
     } catch (error) {
         res.status(500).send("Error updating food item");

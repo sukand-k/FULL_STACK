@@ -5,10 +5,10 @@ const foodschema = new mongoose.Schema({
         type : String,
         required : true
     },
-    daySinceIate: {
+    daysSinceIate: {
         type : Number,
         required : true
     }
 });
 const Food = mongoose.model("Food",foodschema);
-MediaSourceHandle.exports = Food;
+module.exports = Food;
